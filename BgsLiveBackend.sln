@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BgsLiveBackend.Admin.Api", "BgsLiveBackend.Admin.Api\BgsLiveBackend.Admin.Api.csproj", "{48CDFC80-6FF6-49B3-ABE0-C6B54EF7BEEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BgsLiveBackend.Admin.Api", "BgsLiveBackend.Admin.Api\BgsLiveBackend.Admin.Api.csproj", "{48CDFC80-6FF6-49B3-ABE0-C6B54EF7BEEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.Core", "Bgs.Live.Core\Bgs.Live.Core.csproj", "{030154F9-BA51-4564-AC06-328757157DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.Bll", "Bgs.Live.Bll\Bgs.Live.Bll.csproj", "{D1007C52-241D-4948-9AE9-D6D97C2F4343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.Dal", "Bgs.Live.Dal\Bgs.Live.Dal.csproj", "{16D6F90C-4B1F-4736-8F54-B1B398AC3571}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.Common", "Bgs.Live.Common\Bgs.Live.Common.csproj", "{1C17BCAD-1065-47B7-BB60-8E343E3B1FA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.Utility", "Bgs.Live.Utily\Bgs.Live.Utility.csproj", "{A1A503D0-486D-4531-A8EF-C5A827416F3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.Infrastructure", "Bgs.Live.Infrastructure\Bgs.Live.Infrastructure.csproj", "{0AB5F7FE-8D76-455D-B038-4E7CCD3C7560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgs.Live.DataconnectionManager.Sqlserver", "Bgs.Live.DataconnectionManager.Sqlserver\Bgs.Live.DataconnectionManager.Sqlserver.csproj", "{431EC939-7892-468E-90D0-369E540B25A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BgsLiveBackend.Web.Api", "BgsLiveBackend.Web.Api\BgsLiveBackend.Web.Api.csproj", "{2D95DF37-EFFD-4F94-BA76-9391C37E7748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BgsLiveBackend.Multimedia.Api", "BgsLiveBackend.Multimedia.Api\BgsLiveBackend.Multimedia.Api.csproj", "{2A12102E-95B8-41B7-9280-8B02ABD57340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +33,42 @@ Global
 		{48CDFC80-6FF6-49B3-ABE0-C6B54EF7BEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48CDFC80-6FF6-49B3-ABE0-C6B54EF7BEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48CDFC80-6FF6-49B3-ABE0-C6B54EF7BEEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{030154F9-BA51-4564-AC06-328757157DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{030154F9-BA51-4564-AC06-328757157DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{030154F9-BA51-4564-AC06-328757157DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{030154F9-BA51-4564-AC06-328757157DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1007C52-241D-4948-9AE9-D6D97C2F4343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1007C52-241D-4948-9AE9-D6D97C2F4343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1007C52-241D-4948-9AE9-D6D97C2F4343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1007C52-241D-4948-9AE9-D6D97C2F4343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D6F90C-4B1F-4736-8F54-B1B398AC3571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D6F90C-4B1F-4736-8F54-B1B398AC3571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D6F90C-4B1F-4736-8F54-B1B398AC3571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D6F90C-4B1F-4736-8F54-B1B398AC3571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C17BCAD-1065-47B7-BB60-8E343E3B1FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C17BCAD-1065-47B7-BB60-8E343E3B1FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C17BCAD-1065-47B7-BB60-8E343E3B1FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C17BCAD-1065-47B7-BB60-8E343E3B1FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A503D0-486D-4531-A8EF-C5A827416F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A503D0-486D-4531-A8EF-C5A827416F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A503D0-486D-4531-A8EF-C5A827416F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A503D0-486D-4531-A8EF-C5A827416F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB5F7FE-8D76-455D-B038-4E7CCD3C7560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB5F7FE-8D76-455D-B038-4E7CCD3C7560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB5F7FE-8D76-455D-B038-4E7CCD3C7560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB5F7FE-8D76-455D-B038-4E7CCD3C7560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{431EC939-7892-468E-90D0-369E540B25A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{431EC939-7892-468E-90D0-369E540B25A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{431EC939-7892-468E-90D0-369E540B25A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{431EC939-7892-468E-90D0-369E540B25A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D95DF37-EFFD-4F94-BA76-9391C37E7748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D95DF37-EFFD-4F94-BA76-9391C37E7748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D95DF37-EFFD-4F94-BA76-9391C37E7748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D95DF37-EFFD-4F94-BA76-9391C37E7748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A12102E-95B8-41B7-9280-8B02ABD57340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A12102E-95B8-41B7-9280-8B02ABD57340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A12102E-95B8-41B7-9280-8B02ABD57340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A12102E-95B8-41B7-9280-8B02ABD57340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

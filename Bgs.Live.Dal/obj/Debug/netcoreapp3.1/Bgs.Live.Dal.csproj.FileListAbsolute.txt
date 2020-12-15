@@ -1,0 +1,14 @@
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.Dal.deps.json
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.Dal.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.Dal.pdb
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.Common.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.Common.pdb
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.csprojAssemblyReference.cache
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.AssemblyInfoInputs.cache
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.AssemblyInfo.cs
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.csproj.CoreCompileInputs.cache
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.csproj.CopyComplete
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\obj\Debug\netcoreapp3.1\Bgs.Live.Dal.pdb
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Dal\bin\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.pdb

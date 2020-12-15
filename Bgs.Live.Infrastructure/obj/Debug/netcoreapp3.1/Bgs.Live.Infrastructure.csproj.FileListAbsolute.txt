@@ -1,0 +1,14 @@
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.csprojAssemblyReference.cache
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.AssemblyInfoInputs.cache
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.AssemblyInfo.cs
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.csproj.CoreCompileInputs.cache
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.deps.json
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.pdb
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Core.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Utility.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Core.pdb
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\bin\Debug\netcoreapp3.1\Bgs.Live.Utility.pdb
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.csproj.CopyComplete
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.dll
+C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Infrastructure\obj\Debug\netcoreapp3.1\Bgs.Live.Infrastructure.pdb

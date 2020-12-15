@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bgs.Live.Bll\Bgs.Live.Bll.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Common\Bgs.Live.Common.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Core\Bgs.Live.Core.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Dal\Bgs.Live.Dal.csproj" />
+    <ProjectReference Include="..\Bgs.Live.DataconnectionManager.Sqlserver\Bgs.Live.DataconnectionManager.Sqlserver.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Infrastructure\Bgs.Live.Infrastructure.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Utily\Bgs.Live.Utility.csproj" />
   </ItemGroup>
 
 

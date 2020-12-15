@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "OxNeSlCYADuatvLDlDhYzw0N+wzTekLuR1etksG1/z60ZgxZBN3GOm5lerS0tKS88/fBzJRemQsP6EE+n/pDEQ==",
+  "success": true,
+  "projectFilePath": "C:\\WorkProject\\BgsLive\\BgsLive.Backend\\Bgs.Live.Utily\\Bgs.Live.Utility.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.1\\microsoft.aspnetcore.http.features.5.0.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
