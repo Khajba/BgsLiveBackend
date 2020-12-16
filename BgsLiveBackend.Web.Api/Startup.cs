@@ -1,3 +1,10 @@
+using Bgs.Bll.Abstract;
+using Bgs.Infrastructure.Api.Authorization;
+using Bgs.Infrastructure.Api.Exceptions;
+using Bgs.Live.Bll;
+using Bgs.Live.Bll.Abstract;
+using Bgs.Live.Dal;
+using Bgs.Live.Dal.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,7 +32,22 @@ namespace BgsLiveBackend.Web.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
+            //Services
+            services.AddSingleton<IUserService, UserService>();          
+
+
+            // repositories            
+            services.AddSingleton<IUserRepository, UserRepository>();           
+            services.AddSingleton<ITransactionRepository, TransactionRepository>();
+            
+
+            services.AddHttpClient();
+
             services.AddControllers();
+
+            services.AddBgsAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,12 +57,22 @@ namespace BgsLiveBackend.Web.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMiddleware<GlobalExceptionHandler>();
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin();
+                options.AllowAnyMethod();
+                options.AllowAnyHeader();
+            });
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

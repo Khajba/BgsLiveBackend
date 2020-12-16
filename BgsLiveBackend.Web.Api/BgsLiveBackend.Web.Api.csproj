@@ -1,11 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Bgs.Live.Bll\Bgs.Live.Bll.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Common\Bgs.Live.Common.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Core\Bgs.Live.Core.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Dal\Bgs.Live.Dal.csproj" />
+    <ProjectReference Include="..\Bgs.Live.DataconnectionManager.Sqlserver\Bgs.Live.DataconnectionManager.Sqlserver.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Infrastructure\Bgs.Live.Infrastructure.csproj" />
+    <ProjectReference Include="..\Bgs.Live.Utily\Bgs.Live.Utility.csproj" />
   </ItemGroup>
 
 
