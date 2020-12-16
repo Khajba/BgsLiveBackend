@@ -1,9 +1,0 @@
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\bin\Debug\netcoreapp3.1\Bgs.Live.Utility.deps.json
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\bin\Debug\netcoreapp3.1\Bgs.Live.Utility.dll
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\bin\Debug\netcoreapp3.1\Bgs.Live.Utility.pdb
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\obj\Debug\netcoreapp3.1\Bgs.Live.Utility.csprojAssemblyReference.cache
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\obj\Debug\netcoreapp3.1\Bgs.Live.Utility.AssemblyInfoInputs.cache
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\obj\Debug\netcoreapp3.1\Bgs.Live.Utility.AssemblyInfo.cs
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\obj\Debug\netcoreapp3.1\Bgs.Live.Utility.csproj.CoreCompileInputs.cache
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\obj\Debug\netcoreapp3.1\Bgs.Live.Utility.dll
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.Utily\obj\Debug\netcoreapp3.1\Bgs.Live.Utility.pdb

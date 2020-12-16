@@ -1,9 +1,0 @@
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\bin\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.deps.json
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\bin\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.dll
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\bin\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.pdb
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\obj\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.csprojAssemblyReference.cache
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\obj\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.AssemblyInfoInputs.cache
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\obj\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.AssemblyInfo.cs
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\obj\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.csproj.CoreCompileInputs.cache
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\obj\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.dll
-C:\WorkProject\BgsLive\BgsLive.Backend\Bgs.Live.DataconnectionManager.Sqlserver\obj\Debug\netcoreapp3.1\Bgs.Live.DataconnectionManager.Sqlserver.pdb
