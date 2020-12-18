@@ -3,6 +3,7 @@ using Bgs.Live.Bll.Abstract;
 using BgsLiveBackend.Web.Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace BgsLiveBackend.Web.Api.Controllers
 {
@@ -20,23 +21,23 @@ namespace BgsLiveBackend.Web.Api.Controllers
         }
 
         [HttpPost("RegisterUser")]
-        public IActionResult RegisterUser(RegisterUserModel model)
+        public async Task<IActionResult> RegisterUser(RegisterUserModel model)
         {
-            _userService.RegisterUser(model.Email, model.Firstname, model.Username, model.Lastname, model.Password, model.PersonalNumber, model.GenderId.Value, model.BirthDate.Value, model.Address);
+           await _userService.RegisterUser(model.Email, model.Firstname, model.Username, model.Lastname, model.Password, model.PersonalNumber, model.GenderId.Value, model.BirthDate.Value, model.Address);
             return Ok();
         }
 
         [HttpGet("GetUserById")]
-        public IActionResult GetUserById(int id)
+        public async Task<IActionResult> GetUserById(int id)
         {
-            var user = _userService.GetUserById(id);
+            var user = await _userService.GetUserById(id);
             return Ok(user);
         }
 
         [HttpGet("login")]
-        public IActionResult Login([FromQuery] LoginUserModel model)
+        public async Task<IActionResult> Login([FromQuery] LoginUserModel model)
         {
-            var user = _userService.AuthenticateUser(model.Username, model.Password);
+            var user = await _userService.AuthenticateUser(model.Username, model.Password);
 
             var jwt = _jwtHandler.CreateToken(user.Id);
 

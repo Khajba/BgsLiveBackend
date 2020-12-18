@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Bgs.Live.Bll
 {
@@ -38,10 +39,10 @@ namespace Bgs.Live.Bll
 
         }
 
-        public void RegisterUser(string email, string firstname, string username, string lastname, string password, string personalId, int genderId, DateTime birthDate, string address)
+        public async Task RegisterUser(string email, string firstname, string username, string lastname, string password, string personalId, int genderId, DateTime birthDate, string address)
         {
-            var pincode = _userRepository.GetAvailablePincode();
-            var user = _userRepository.GetUserByEmail(email);
+            var pincode =await  _userRepository.GetAvailablePincode();
+            var user = await _userRepository.GetUserByEmail(email);
 
             if (user != null)
             {
@@ -57,70 +58,70 @@ namespace Bgs.Live.Bll
 
             using (var transaction = new BgsTransactionScope())
             {
-                _userRepository.AddUser(email, firstname, username, lastname, password.ToSHA256(pincode), (int)UserStatus.Active, pincode, personalId, genderId, DateTime.Now, birthDate, address);
-                _userRepository.ReleasePincode(pincode, DateTime.Now);
+                await _userRepository.AddUser(email, firstname, username, lastname, password.ToSHA256(pincode), (int)UserStatus.Active, pincode, personalId, genderId, DateTime.Now, birthDate, address);
+                await _userRepository.ReleasePincode(pincode, DateTime.Now);
 
                 transaction.Complete();
             }
         }
 
-        public User AuthenticateUser(string username, string password)
+        public async Task<User> AuthenticateUser(string username, string password)
         {
-            var user = _userRepository.GetUserByUsername(username);
+            var user =await _userRepository.GetUserByUsername(username);
 
             if (user == null)
             {
-                throw new BgsException((int)WebApiErrorCodes.EmailOrPasswordIncorrect);
+                throw new BgsException((int)WebApiErrorCodes.UsernameOrPasswordIncorrect);
             }
 
             if (user.StatusId != (int)UserStatus.Active)
             {
-                throw new BgsException((int)WebApiErrorCodes.EmailOrPasswordIncorrect);
+                throw new BgsException((int)WebApiErrorCodes.UsernameOrPasswordIncorrect);
             }
 
-            user = _userRepository.GetByCredentials(username, password.ToSHA256(user.Pincode), (int)UserStatus.Active);
+            user = await _userRepository.GetByCredentials(username, password.ToSHA256(user.Pincode));
 
             return user;
 
 
         }
 
-        public User GetUserById(int Id)
+        public async Task<User> GetUserById(int Id)
         {
-            return _userRepository.GetUserById(Id);
+            return await _userRepository.GetUserById(Id);
         }
 
-        public void SaveDetails(int userId, string firstname, string lastname)
+        public async Task SaveDetails(int userId, string firstname, string lastname)
         {
-            _userRepository.UpdateDetails(userId, firstname, lastname);
+            await _userRepository.UpdateDetails(userId, firstname, lastname);
         }
 
-        public void SaveUserAddress(int userId, string address)
+        public async Task SaveUserAddress(int userId, string address)
         {
-            var currentaddress = _userRepository.GetUserAddress(userId);
+            var currentaddress =await _userRepository.GetUserAddress(userId);
             if (currentaddress == null)
             {
-                _userRepository.AddUserAddress(userId, address);
+               await _userRepository.AddUserAddress(userId, address);
             }
             else
             {
-                _userRepository.UpdateUserAddress(userId, address);
+                await _userRepository.UpdateUserAddress(userId, address);
             }
 
         }
 
-        public string GetUserAddress(int userId)
+        public async Task<string> GetUserAddress(int userId)
         {
-            return _userRepository.GetUserAddress(userId);
+            return await _userRepository.GetUserAddress(userId);
         }
 
-        public void ChangeUserPassword(int userId, string oldPassword, string newPassword)
+        public async Task ChangeUserPassword(int userId, string oldPassword, string newPassword)
         {
-            var user = _userRepository.GetUserForPasswordUpdate(userId);
+            var user = await _userRepository.GetUserForPasswordUpdate(userId);
 
             if (user.Password == oldPassword.ToSHA256(user.Pincode))
             {
-                _userRepository.UpdateUserPassword(userId, newPassword.ToSHA256(user.Pincode));
+               await _userRepository.UpdateUserPassword(userId, newPassword.ToSHA256(user.Pincode));
             }
 
             else
@@ -129,27 +130,27 @@ namespace Bgs.Live.Bll
             }
         }
 
-        public void AddBalance(int userId, decimal amount)
+        public async Task AddBalance(int userId, decimal amount)
         {
-            var balance = _userRepository.GetBalance(userId) ?? 0;
+            var balance = await _userRepository.GetBalance(userId) ?? 0;
             balance = balance + amount;
 
             using (var transaction = new BgsTransactionScope())
             {
-                _userRepository.UpdateBalance(userId, balance);
-                _transactionRepository.AddTransaction((int)TransactionType.Deposit, userId, DateTime.Now, amount);
+                await _userRepository.UpdateBalance(userId, balance);
+                await _transactionRepository.AddTransaction((int)TransactionType.Deposit, userId, DateTime.Now, amount);
                 transaction.Complete();
 
 
             };
         }
 
-        public decimal GetBalance(int userId)
+        public async Task<decimal> GetBalance(int userId)
         {
-            return _userRepository.GetBalance(userId) ?? 0;
+            return await _userRepository.GetBalance(userId) ?? 0;
         }
 
-        public string UploadUserAvatar(int userId, IFormFile file)
+        public async Task<string> UploadUserAvatar(int userId, IFormFile file)
         {
             var multiContent = file.ToHttpContent();
 
@@ -158,27 +159,27 @@ namespace Bgs.Live.Bll
             if (response.IsSuccessStatusCode)
             {
                 var avatarUrl = response.Content.ReadAsStringAsync().Result;
-                _userRepository.UpdateUserAvatarUrl(userId, avatarUrl);
+                await _userRepository.UpdateUserAvatarUrl(userId, avatarUrl);
                 return avatarUrl;
             }
 
             throw new BgsException((int)WebApiErrorCodes.CouldNotUploadAvatar);
         }
 
-        public void DeleteAvatar(int userId)
+        public async Task DeleteAvatar(int userId)
         {
-            _userRepository.UpdateUserAvatarUrl(userId, null);
+           await _userRepository.UpdateUserAvatarUrl(userId, null);
         }
 
-        public int GetUsersCount(string pinCode, string email, string firstname, string lastname)
+        public async Task<int> GetUsersCount(string pinCode, string email, string firstname, string lastname)
         {
-            return _userRepository.GetUsersCount(pinCode, email, firstname, lastname);
+            return await _userRepository.GetUsersCount(pinCode, email, firstname, lastname);
         }
 
-        public AdminUserDetailsDto GetDetails(int userId, int pageNumber, int pageSize)
+        public async Task<AdminUserDetailsDto> GetDetails(int userId, int pageNumber, int pageSize)
         {
-            var details = _userRepository.GetUserDetails(userId);
-            var transactions = _transactionRepository.GetTransactions(userId, null, null, null, null, null, null, pageNumber, pageSize);
+            var details = await _userRepository.GetUserDetails(userId);
+            var transactions =await _transactionRepository.GetTransactions(userId, null, null, null, null, null, null, pageNumber, pageSize);
 
             return new AdminUserDetailsDto
             {
@@ -187,23 +188,14 @@ namespace Bgs.Live.Bll
             };
         }
 
-        public IEnumerable<UserListItemDto> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId)
+        public async Task<IEnumerable<UserListItemDto>> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId)
         {
-            return _userRepository.GetUsers(pinCode, email, firstname, username, lastname, pageNumber, PageSize, personalId);
+            return await _userRepository.GetUsers(pinCode, email, firstname, username, lastname, pageNumber, PageSize, personalId);
         }
 
-        public UserAccountDto GetUserAccountDetails(int userId)
+        public async Task<UserDto> GetUserAccountDetails(int userId)
         {
-            var userDetails = _userRepository.GetUserDetails(userId);
-            var userAddress = _userRepository.GetUserAddress(userId);
-
-
-            return new UserAccountDto
-            {
-                UserDetails = userDetails,
-                UserAddress = userAddress,
-
-            };
+           return await  _userRepository.GetUserDetails(userId);
         }
     }
 }

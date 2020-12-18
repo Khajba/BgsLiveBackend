@@ -8,7 +8,7 @@ namespace Bgs.Live.Common.Dtos
     {
         public UserDto UserDetails { get; set; }
 
-        public string UserAddress { get; set; }
+        
 
 
     }

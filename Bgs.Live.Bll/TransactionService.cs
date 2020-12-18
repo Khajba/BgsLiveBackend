@@ -4,6 +4,7 @@ using Bgs.Live.Dal.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Bgs.Live.Bll
 {
@@ -15,14 +16,14 @@ namespace Bgs.Live.Bll
         {
             _transactionRepository = transactionRepository;
         }
-        public IEnumerable<TransactionDto> GetTransactions(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize)
+        public async Task<IEnumerable<TransactionDto>> GetTransactions(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize)
         {
-            return _transactionRepository.GetTransactions(null, typeId, pinCode, dateFrom, dateTo, amountFrom, amountTo, pageNumber, pageSize);
+            return await  _transactionRepository.GetTransactions(null, typeId, pinCode, dateFrom, dateTo, amountFrom, amountTo, pageNumber, pageSize);
         }
 
-        public int GetTransactionsCount(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo)
+        public async Task<int> GetTransactionsCount(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo)
         {
-            return _transactionRepository.GetTransactionsCount(typeId, pinCode, dateFrom, dateTo, amountFrom, amountTo);
+            return await _transactionRepository.GetTransactionsCount(typeId, pinCode, dateFrom, dateTo, amountFrom, amountTo);
         }
 
         

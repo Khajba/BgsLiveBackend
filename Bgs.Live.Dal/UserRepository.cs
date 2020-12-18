@@ -6,6 +6,7 @@ using Bgs.Live.Common.Entities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Bgs.Live.Dal
 {
@@ -19,7 +20,7 @@ namespace Bgs.Live.Dal
 
         }
 
-        public void AddUser(string email, string firstname, string username, string lastname, string password, int statusId, string pincode, string personalId, int genderId, DateTime registrationDate, DateTime birthDate, string address)
+        public async Task AddUser(string email, string firstname, string username, string lastname, string password, int statusId, string pincode, string personalId, int genderId, DateTime registrationDate, DateTime birthDate, string address)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.AddUser"))
             {
@@ -36,114 +37,114 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("Address", address);
                 cmd.AddParameter("RegistrationDate", registrationDate);
 
-                cmd.ExecuteNonQuery();
+               await cmd.ExecuteNonQueryAsync();
             };
         }
 
-        public void AddUserAddress(int userId, string address)
+        public async Task AddUserAddress(int userId, string address)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.AddUserAddress"))
             {
                 cmd.AddParameter("UserId", userId);
                 cmd.AddParameter("Address", address);
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        public string GetAvailablePincode()
+        public async Task<string> GetAvailablePincode()
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetAvailablePincode"))
             {
-                return cmd.ExecuteReaderPrimitive<string>("Pincode");
+                return await cmd.ExecuteReaderPrimitiveAsync<string>("Pincode");
             };
         }
 
-        public decimal? GetBalance(int userId)
+        public async Task<decimal?> GetBalance(int userId)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetBalance"))
             {
                 cmd.AddParameter("UserId", userId);
 
-                return cmd.ExecuteReaderPrimitive<decimal?>("Balance");
+                return await cmd.ExecuteReaderPrimitiveAsync<decimal?>("Balance");
             };
         }
 
-        public User GetUserByUsername(string username)
+        public async Task<User> GetUserByUsername(string username)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserByUsername"))
             {
                 cmd.AddParameter("Username", username);
 
 
-                return cmd.ExecuteReaderSingle<User>();
+                return await cmd.ExecuteReaderSingleAsync<User>();
             }
         }
 
-        public User GetByCredentials(string username, string password, int statusId)
+        public async Task<User> GetByCredentials(string username, string password)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserByCredentials"))
             {
                 cmd.AddParameter("Username", username);
                 cmd.AddParameter("Password", password);
-                cmd.AddParameter("StatusIdActive", statusId);
+                
 
-                return cmd.ExecuteReaderSingle<User>();
+                return await cmd.ExecuteReaderSingleAsync<User>();
             }
         }
-
-        public string GetUserAddress(int userId)
+        
+        public async Task<string>GetUserAddress(int userId)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserAddress"))
             {
                 cmd.AddParameter("UserId", userId);
 
-                return cmd.ExecuteReaderPrimitive<string>("Address");
+                return await cmd.ExecuteReaderPrimitiveAsync<string>("Address");
 
             }
         }
 
-        public User GetUserByEmail(string email)
+        public async Task<User> GetUserByEmail(string email)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserByEmail"))
             {
                 cmd.AddParameter("Email", email);
 
-                return cmd.ExecuteReaderSingle<User>();
+                return await cmd.ExecuteReaderSingleAsync<User>();
             }
         }
 
-        public User GetUserById(int Id)
+        public async Task<User> GetUserById(int Id)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserById"))
             {
                 cmd.AddParameter("Id", Id);
 
-                return cmd.ExecuteReaderSingle<User>();
+                return await cmd.ExecuteReaderSingleAsync<User>();
             }
         }
 
-        public UserDto GetUserDetails(int userId)
+        public async Task<UserDto> GetUserDetails(int userId)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserDetails"))
             {
                 cmd.AddParameter("Id", userId);
 
-                return cmd.ExecuteReaderSingle<UserDto>();
+                return await cmd.ExecuteReaderSingleAsync<UserDto>();
             }
         }
 
-        public UserForPasswordUpdateDto GetUserForPasswordUpdate(int userId)
+        public async Task<UserForPasswordUpdateDto> GetUserForPasswordUpdate(int userId)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserForPasswordUpdate"))
             {
                 cmd.AddParameter("Id", userId);
 
-                return cmd.ExecuteReaderSingle<UserForPasswordUpdateDto>();
+                return await cmd.ExecuteReaderSingleAsync<UserForPasswordUpdateDto>();
             }
         }
 
-        public IEnumerable<UserListItemDto> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId)
+        public async Task<IEnumerable<UserListItemDto>> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId)
         {
             using (var cmd = GetSpCommand($"{ _schemaUser}.GetUsers"))
             {
@@ -156,11 +157,11 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("PageSize", PageSize);
                 cmd.AddParameter("Personald", personalId);
 
-                return cmd.ExecuteReader<UserListItemDto>();
+                return await cmd.ExecuteReaderAsync<UserListItemDto>();
             }
         }
 
-        public int GetUsersCount(string pinCode, string email, string firstname, string lastname)
+        public async Task<int> GetUsersCount(string pinCode, string email, string firstname, string lastname)
         {
             using (var cmd = GetSpCommand($"{ _schemaUser}.GetUsersCount"))
             {
@@ -169,33 +170,33 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("Firstname", firstname);
                 cmd.AddParameter("Lastname", lastname);
 
-                return cmd.ExecuteReaderPrimitive<int>("Count");
+                return await cmd.ExecuteReaderPrimitiveAsync<int>("Count");
             }
         }
 
-        public void ReleasePincode(string pincode, DateTime releaseDate)
+        public async Task ReleasePincode(string pincode, DateTime releaseDate)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.ReleasePincode"))
             {
                 cmd.AddParameter("Pincode", pincode);
                 cmd.AddParameter("ReleaseDate", releaseDate);
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        public void UpdateBalance(int userId, decimal? amount)
+        public async Task UpdateBalance(int userId, decimal? amount)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.UpdateBalance"))
             {
                 cmd.AddParameter("UserId", userId);
                 cmd.AddParameter("Amount", amount);
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        public void UpdateDetails(int userId, string firstname, string lastname)
+        public async Task UpdateDetails(int userId, string firstname, string lastname)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserDetails"))
             {
@@ -203,11 +204,11 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("Firstname", firstname);
                 cmd.AddParameter("Lastname", lastname);
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        public void UpdateUserAddress(int userId, string address)
+        public async Task UpdateUserAddress(int userId, string address)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserAddress"))
             {
@@ -215,22 +216,22 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("Address", address);
 
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        public void UpdateUserAvatarUrl(int userId, string avatarUrl)
+        public async Task UpdateUserAvatarUrl(int userId, string avatarUrl)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserAvatarUrl"))
             {
                 cmd.AddParameter("UserId", userId);
                 cmd.AddParameter("AvatarUrl", avatarUrl);
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        public void UpdateUserPassword(int userId, string password)
+        public async Task UpdateUserPassword(int userId, string password)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserPassword"))
             {
@@ -238,7 +239,7 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("Password", password);
 
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
         }
     }

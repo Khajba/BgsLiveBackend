@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Bgs.Live.Dal
 {
@@ -18,14 +19,14 @@ namespace Bgs.Live.Dal
         {
 
         }
-        public InternalUser GetUserByCredentials(string email, string password)
+        public async Task<InternalUser> GetUserByCredentials(string email, string password)
         {
             using (var cmd = GetSpCommand($"{_schemaInternalUser}.GetUserByCredentials"))
             {
                 cmd.AddParameter("Email", email);
                 cmd.AddParameter("Password", password);
 
-                return cmd.ExecuteReaderSingle<InternalUser>();
+                return await cmd.ExecuteReaderSingleAsync<InternalUser>();
             }
         }
     }

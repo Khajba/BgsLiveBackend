@@ -26,9 +26,9 @@ namespace BgsLiveBackend.Admin.Api.Controllers
         }
 
         [HttpGet("login")]
-        public IActionResult Login([FromQuery] AuthenticateUserModel model)
+        public async Task<IActionResult> Login([FromQuery] AuthenticateUserModel model)
         {
-            var internalUser = _internalUserService.AuthenticateUser(model.Email, model.Password);
+            var internalUser = await _internalUserService.AuthenticateUser(model.Email, model.Password);
 
             var jwt = _jwtHandler.CreateToken(internalUser.Id);
 

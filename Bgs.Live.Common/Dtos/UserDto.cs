@@ -21,5 +21,7 @@ namespace Bgs.Live.Common.Dtos
         public decimal Balance { get; set; }
 
         public string AvatarUrl { get; set; }
+
+        public string UserAddress { get; set; }
     }
 }

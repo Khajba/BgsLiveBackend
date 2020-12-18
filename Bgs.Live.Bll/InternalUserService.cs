@@ -7,6 +7,7 @@ using Bgs.Utility.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Bgs.Live.Bll
 {
@@ -19,7 +20,7 @@ namespace Bgs.Live.Bll
             _internalUserRepository = internalUserRepository;
         }
 
-        public InternalUser AuthenticateUser(string email, string password)
+        public async Task<InternalUser> AuthenticateUser(string email, string password)
         {
             var user = _internalUserRepository.GetUserByCredentials(email, password.ToSHA256(email));
 
@@ -29,7 +30,7 @@ namespace Bgs.Live.Bll
             }
             else
             {
-                return user;
+                return await user;
             }
         }
     }
