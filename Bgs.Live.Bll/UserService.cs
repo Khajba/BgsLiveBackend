@@ -25,7 +25,7 @@ namespace Bgs.Live.Bll
 
 
         public UserService(
-            IUserRepository userRepository, 
+            IUserRepository userRepository,
             IHttpClientFactory httpClientFactory,
             ITransactionRepository transactionRepository,
             IConfiguration configuration)
@@ -35,9 +35,10 @@ namespace Bgs.Live.Bll
             _transactionRepository = transactionRepository;
             _httpClient = httpClientFactory.CreateClient();
             _multimediaApiBaseUri = configuration["MultimediaApiBaseUri"];
-            
+
         }
-        public void RegisterUser(string email, string firstname, string username, string lastname, string password, string personalId, string gender, DateTime birthDate, string address)
+
+        public void RegisterUser(string email, string firstname, string username, string lastname, string password, string personalId, int genderId, DateTime birthDate, string address)
         {
             var pincode = _userRepository.GetAvailablePincode();
             var user = _userRepository.GetUserByEmail(email);
@@ -56,8 +57,7 @@ namespace Bgs.Live.Bll
 
             using (var transaction = new BgsTransactionScope())
             {
-
-                _userRepository.AddUser(email, firstname, username,  lastname, password.ToSHA256(pincode), (int)UserStatus.Active, pincode,personalId,gender,birthDate,address);
+                _userRepository.AddUser(email, firstname, username, lastname, password.ToSHA256(pincode), (int)UserStatus.Active, pincode, personalId, genderId, DateTime.Now, birthDate, address);
                 _userRepository.ReleasePincode(pincode, DateTime.Now);
 
                 transaction.Complete();
@@ -66,7 +66,7 @@ namespace Bgs.Live.Bll
 
         public User AuthenticateUser(string username, string password)
         {
-            var user = _userRepository.GetUserByUsername(username);            
+            var user = _userRepository.GetUserByUsername(username);
 
             if (user == null)
             {
@@ -111,7 +111,7 @@ namespace Bgs.Live.Bll
 
         public string GetUserAddress(int userId)
         {
-           return  _userRepository.GetUserAddress(userId);
+            return _userRepository.GetUserAddress(userId);
         }
 
         public void ChangeUserPassword(int userId, string oldPassword, string newPassword)
@@ -177,12 +177,12 @@ namespace Bgs.Live.Bll
 
         public AdminUserDetailsDto GetDetails(int userId, int pageNumber, int pageSize)
         {
-            var details = _userRepository.GetUserDetails(userId);            
+            var details = _userRepository.GetUserDetails(userId);
             var transactions = _transactionRepository.GetTransactions(userId, null, null, null, null, null, null, pageNumber, pageSize);
 
             return new AdminUserDetailsDto
             {
-                UserDetails = details,                
+                UserDetails = details,
                 Transactions = transactions
             };
         }
@@ -196,13 +196,13 @@ namespace Bgs.Live.Bll
         {
             var userDetails = _userRepository.GetUserDetails(userId);
             var userAddress = _userRepository.GetUserAddress(userId);
-            
+
 
             return new UserAccountDto
             {
                 UserDetails = userDetails,
                 UserAddress = userAddress,
-                
+
             };
         }
     }

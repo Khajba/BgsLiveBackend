@@ -6,11 +6,10 @@ using Bgs.Live.Common.Entities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Bgs.Live.Dal
 {
-    public class UserRepository: SqlServerRepository, IUserRepository
+    public class UserRepository : SqlServerRepository, IUserRepository
     {
         private const string _schemaUser = "User";
 
@@ -20,7 +19,7 @@ namespace Bgs.Live.Dal
 
         }
 
-        public void AddUser(string email, string firstname, string username, string lastname, string password, int statusId, string pincode, string personalId, string gender, DateTime birthDate, string address)
+        public void AddUser(string email, string firstname, string username, string lastname, string password, int statusId, string pincode, string personalId, int genderId, DateTime registrationDate, DateTime birthDate, string address)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.AddUser"))
             {
@@ -29,12 +28,13 @@ namespace Bgs.Live.Dal
                 cmd.AddParameter("Username", username);
                 cmd.AddParameter("Lastname", lastname);
                 cmd.AddParameter("Password", password);
-                cmd.AddParameter("StatusIdActive", statusId);
-                cmd.AddParameter("Pincode", pincode);
-                cmd.AddParameter("PersonalId", personalId);
-                cmd.AddParameter("Gender", gender);
+                cmd.AddParameter("StatusId", statusId);
+                cmd.AddParameter("PinCode", pincode);
+                cmd.AddParameter("PersonalNumber", personalId);
+                cmd.AddParameter("GenderId", genderId);
                 cmd.AddParameter("BirthDate", birthDate);
                 cmd.AddParameter("Address", address);
+                cmd.AddParameter("RegistrationDate", registrationDate);
 
                 cmd.ExecuteNonQuery();
             };
@@ -74,7 +74,7 @@ namespace Bgs.Live.Dal
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserByUsername"))
             {
                 cmd.AddParameter("Username", username);
-                
+
 
                 return cmd.ExecuteReaderSingle<User>();
             }
@@ -143,7 +143,7 @@ namespace Bgs.Live.Dal
             }
         }
 
-        public IEnumerable<UserListItemDto> GetUsers(string pinCode, string email, string firstname,string username, string lastname, int? pageNumber, int? PageSize, string personalId)
+        public IEnumerable<UserListItemDto> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId)
         {
             using (var cmd = GetSpCommand($"{ _schemaUser}.GetUsers"))
             {

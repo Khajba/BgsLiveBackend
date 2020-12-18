@@ -1,13 +1,8 @@
-﻿using Bgs.Bll.Abstract;
-using Bgs.Infrastructure.Api.Authorization;
+﻿using Bgs.Infrastructure.Api.Authorization;
 using Bgs.Live.Bll.Abstract;
 using BgsLiveBackend.Web.Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BgsLiveBackend.Web.Api.Controllers
 {
@@ -27,7 +22,7 @@ namespace BgsLiveBackend.Web.Api.Controllers
         [HttpPost("RegisterUser")]
         public IActionResult RegisterUser(RegisterUserModel model)
         {
-            _userService.RegisterUser(model.Email, model.Firstname, model.Username, model.Lastname,model.Password,model.PersonalId,model.Gender,model.BirthDate,model.Address);
+            _userService.RegisterUser(model.Email, model.Firstname, model.Username, model.Lastname, model.Password, model.PersonalNumber, model.GenderId.Value, model.BirthDate.Value, model.Address);
             return Ok();
         }
 

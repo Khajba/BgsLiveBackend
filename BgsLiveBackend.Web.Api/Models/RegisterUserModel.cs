@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BgsLiveBackend.Web.Api.Models
 {
@@ -17,12 +14,12 @@ namespace BgsLiveBackend.Web.Api.Models
         [Required]
         public string Lastname { get; set; }
         [Required]
-        public string PersonalId { get; set; }
+        public string PersonalNumber { get; set; }
         [Required]
-        public string Gender { get; set; }
+        public int? GenderId { get; set; }
         [Required]
-        public DateTime BirthDate { get; set; }
-        
+        public DateTime? BirthDate { get; set; }
+
         public string Address { get; set; }
         [Required]
         public string Password { get; set; }
