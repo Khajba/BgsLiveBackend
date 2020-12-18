@@ -91,9 +91,9 @@ namespace Bgs.Live.Bll
             return await _userRepository.GetUserById(Id);
         }
 
-        public async Task SaveDetails(int userId, string firstname, string lastname)
+        public async Task SaveDetails(int userId, string phoneNumber)
         {
-            await _userRepository.UpdateDetails(userId, firstname, lastname);
+            await _userRepository.UpdateDetails(userId, phoneNumber);
         }
 
         public async Task SaveUserAddress(int userId, string address)
@@ -171,9 +171,9 @@ namespace Bgs.Live.Bll
            await _userRepository.UpdateUserAvatarUrl(userId, null);
         }
 
-        public async Task<int> GetUsersCount(string pinCode, string email, string firstname, string lastname)
+        public async Task<int> GetUsersCount(string pinCode, string email, string username, string firstname, string lastname, string personalId)
         {
-            return await _userRepository.GetUsersCount(pinCode, email, firstname, lastname);
+            return await _userRepository.GetUsersCount(pinCode, email,username, firstname, lastname, personalId);
         }
 
         public async Task<AdminUserDetailsDto> GetDetails(int userId, int pageNumber, int pageSize)

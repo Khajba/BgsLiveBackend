@@ -12,7 +12,7 @@ namespace Bgs.Live.Bll.Abstract
         public Task RegisterUser(string email, string firstname, string username, string lastname, string password, string personalId, int genderId,  DateTime birthDate, string address);
         public Task<User> GetUserById(int Id);
         public Task<User> AuthenticateUser(string username, string password);
-        public Task SaveDetails(int userId, string firstname, string lastname);
+        public Task SaveDetails(int userId, string phoneNumber);
         public Task SaveUserAddress(int userId, string address);
         public Task<string> GetUserAddress(int userId);
         public Task<UserDto> GetUserAccountDetails(int userId);
@@ -21,7 +21,7 @@ namespace Bgs.Live.Bll.Abstract
         public Task<decimal> GetBalance(int userId);
         public Task<string> UploadUserAvatar(int userId, IFormFile file);
         public Task DeleteAvatar(int userId);
-        public Task<int> GetUsersCount(string pinCode, string email, string firstname, string lastname);
+        public Task<int> GetUsersCount(string pinCode, string email,string username, string firstname, string lastname, string personalId);
         public Task<AdminUserDetailsDto> GetDetails(int userId, int pageNumber, int pageSize);
         public Task<IEnumerable<UserListItemDto>> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId);
 

@@ -29,10 +29,10 @@ namespace BgsLiveBackend.Web.Api.Controllers
 
         
 
-        [HttpPost("saveDetails")]
-        public async Task<IActionResult> SaveDetails(SaveDetailsModel model)
+        [HttpPost("updateDetails")]
+        public async Task<IActionResult> SaveDetails(string phoneNumber)
         {
-            await _userService.SaveDetails(CurrentUserId, model.Firstname, model.Lastname);
+            await _userService.SaveDetails(CurrentUserId, phoneNumber);
             return Ok();
         }
 

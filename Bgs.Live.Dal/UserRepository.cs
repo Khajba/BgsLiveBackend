@@ -161,14 +161,16 @@ namespace Bgs.Live.Dal
             }
         }
 
-        public async Task<int> GetUsersCount(string pinCode, string email, string firstname, string lastname)
+        public async Task<int> GetUsersCount(string pinCode, string email, string username, string firstname, string lastname, string personalId)
         {
             using (var cmd = GetSpCommand($"{ _schemaUser}.GetUsersCount"))
             {
                 cmd.AddParameter("PinCode", pinCode);
                 cmd.AddParameter("Email", email);
                 cmd.AddParameter("Firstname", firstname);
+                cmd.AddParameter("Username", username);
                 cmd.AddParameter("Lastname", lastname);
+                cmd.AddParameter("PersonalId", personalId);
 
                 return await cmd.ExecuteReaderPrimitiveAsync<int>("Count");
             }
@@ -196,13 +198,13 @@ namespace Bgs.Live.Dal
             }
         }
 
-        public async Task UpdateDetails(int userId, string firstname, string lastname)
+        public async Task UpdateDetails(int userId, string phoneNumber)
         {
             using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserDetails"))
             {
                 cmd.AddParameter("Id", userId);
-                cmd.AddParameter("Firstname", firstname);
-                cmd.AddParameter("Lastname", lastname);
+                cmd.AddParameter("PhoneNumber", phoneNumber);
+                
 
                 await cmd.ExecuteNonQueryAsync();
             }

@@ -17,7 +17,7 @@ namespace Bgs.Bll.Abstract
         public Task<User> GetByCredentials(string username, string password);
         public Task<UserDto> GetUserDetails(int userId);
         public Task<string> GetUserAddress(int userId);
-        public Task UpdateDetails(int userId, string firstname, string lastname);
+        public Task UpdateDetails(int userId, string phoneNumber);
         public Task UpdateUserAddress(int userId, string address);
         public Task AddUserAddress(int userId, string address);
         public Task UpdateUserPassword(int userId, string password);
@@ -26,7 +26,7 @@ namespace Bgs.Bll.Abstract
         public Task<UserForPasswordUpdateDto> GetUserForPasswordUpdate(int userId);
         public Task UpdateUserAvatarUrl(int userId, string avatarUrl);
         public Task<IEnumerable<UserListItemDto>> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId);
-        public Task<int> GetUsersCount(string pinCode, string email, string firstname, string lastname);
+        public Task<int> GetUsersCount(string pinCode, string email, string username, string firstname, string lastname, string personalId);
     }
 
 }
