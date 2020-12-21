@@ -40,17 +40,7 @@ namespace Bgs.Live.Dal
                await cmd.ExecuteNonQueryAsync();
             };
         }
-
-        public async Task AddUserAddress(int userId, string address)
-        {
-            using (var cmd = GetSpCommand($"{_schemaUser}.AddUserAddress"))
-            {
-                cmd.AddParameter("UserId", userId);
-                cmd.AddParameter("Address", address);
-
-                await cmd.ExecuteNonQueryAsync();
-            }
-        }
+        
 
         public async Task<string> GetAvailablePincode()
         {
@@ -91,18 +81,8 @@ namespace Bgs.Live.Dal
 
                 return await cmd.ExecuteReaderSingleAsync<User>();
             }
-        }
-        
-        public async Task<string>GetUserAddress(int userId)
-        {
-            using (var cmd = GetSpCommand($"{_schemaUser}.GetUserAddress"))
-            {
-                cmd.AddParameter("UserId", userId);
+        }        
 
-                return await cmd.ExecuteReaderPrimitiveAsync<string>("Address");
-
-            }
-        }
 
         public async Task<User> GetUserByEmail(string email)
         {
@@ -129,6 +109,7 @@ namespace Bgs.Live.Dal
             using (var cmd = GetSpCommand($"{_schemaUser}.GetUserDetails"))
             {
                 cmd.AddParameter("Id", userId);
+               
 
                 return await cmd.ExecuteReaderSingleAsync<UserDto>();
             }
@@ -198,11 +179,16 @@ namespace Bgs.Live.Dal
             }
         }
 
-        public async Task UpdateDetails(int userId, string phoneNumber)
+        public async Task UpdateDetails(int userId, string firstname, string lastname, DateTime birthDate, int genderId, string address, string phoneNumber)
         {
-            using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserDetails"))
+            using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUser"))
             {
                 cmd.AddParameter("Id", userId);
+                cmd.AddParameter("Firstname", firstname);
+                cmd.AddParameter("Lastname", lastname);
+                cmd.AddParameter("Birthdate", birthDate);
+                cmd.AddParameter("GenderId", genderId);
+                cmd.AddParameter("Address", address);
                 cmd.AddParameter("PhoneNumber", phoneNumber);
                 
 
@@ -210,17 +196,6 @@ namespace Bgs.Live.Dal
             }
         }
 
-        public async Task UpdateUserAddress(int userId, string address)
-        {
-            using (var cmd = GetSpCommand($"{_schemaUser}.UpdateUserAddress"))
-            {
-                cmd.AddParameter("UserId", userId);
-                cmd.AddParameter("Address", address);
-
-
-                await cmd.ExecuteNonQueryAsync();
-            }
-        }
 
         public async Task UpdateUserAvatarUrl(int userId, string avatarUrl)
         {

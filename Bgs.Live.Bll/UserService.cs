@@ -91,29 +91,11 @@ namespace Bgs.Live.Bll
             return await _userRepository.GetUserById(Id);
         }
 
-        public async Task SaveDetails(int userId, string phoneNumber)
+        public async Task SaveDetails(int userId, string firstname, string lastname, DateTime birthDate, int genderId, string address, string phoneNumber)
         {
-            await _userRepository.UpdateDetails(userId, phoneNumber);
+            await _userRepository.UpdateDetails(userId,firstname,lastname,birthDate,genderId,address,phoneNumber);
         }
-
-        public async Task SaveUserAddress(int userId, string address)
-        {
-            var currentaddress =await _userRepository.GetUserAddress(userId);
-            if (currentaddress == null)
-            {
-               await _userRepository.AddUserAddress(userId, address);
-            }
-            else
-            {
-                await _userRepository.UpdateUserAddress(userId, address);
-            }
-
-        }
-
-        public async Task<string> GetUserAddress(int userId)
-        {
-            return await _userRepository.GetUserAddress(userId);
-        }
+        
 
         public async Task ChangeUserPassword(int userId, string oldPassword, string newPassword)
         {
@@ -193,7 +175,7 @@ namespace Bgs.Live.Bll
             return await _userRepository.GetUsers(pinCode, email, firstname, username, lastname, pageNumber, PageSize, personalId);
         }
 
-        public async Task<UserDto> GetUserAccountDetails(int userId)
+        public async Task<UserDto> GetUserDetails(int userId)
         {
            return await  _userRepository.GetUserDetails(userId);
         }

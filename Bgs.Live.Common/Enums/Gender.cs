@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Bgs.Live.Common.Enums
 {
-    public enum TransactionType
+    public enum Gender
     {
-        Deposit = 1,
-        Withdrow,
-        Bet,
-        Win
+        Male =1,
+        Female
     }
 }

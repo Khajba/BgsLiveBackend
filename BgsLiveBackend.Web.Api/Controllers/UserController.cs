@@ -2,10 +2,7 @@
 using BgsLiveBackend.Web.Api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BgsLiveBackend.Web.Api.Controllers
@@ -22,35 +19,19 @@ namespace BgsLiveBackend.Web.Api.Controllers
         [HttpGet("getDetails")]
         public async Task<IActionResult> GetDetails()
         {
-            var userDetails = await _userService.GetUserAccountDetails(CurrentUserId);
+            var userDetails = await _userService.GetUserDetails(CurrentUserId);
 
             return Ok(userDetails);
         }
 
-        
 
-        [HttpPost("updateDetails")]
-        public async Task<IActionResult> SaveDetails(string phoneNumber)
+
+        [HttpPost("update")]
+        public async Task<IActionResult> SaveDetails(UpdateUserDetailsModel model)
         {
-            await _userService.SaveDetails(CurrentUserId, phoneNumber);
+            await _userService.SaveDetails(CurrentUserId, model.Firstname, model.Lastname, model.BirthDate, model.GenderId, model.Address, model.PhoneNumber);
             return Ok();
         }
-
-        [HttpGet("getUserAddress")]
-        public async Task<IActionResult> GetUserAddress()
-        {
-            var userAddress = await _userService.GetUserAddress(CurrentUserId);
-
-            return Ok(userAddress);
-        }
-
-        [HttpPost("saveUserAddress")]
-        public async Task<IActionResult> SaveUserAddress(string address)
-        {
-            await _userService.SaveUserAddress(CurrentUserId,address);
-            return Ok();
-        }     
-
 
         [HttpPost("changeUserPassword")]
         public async Task<IActionResult> ChangeUserPassword(ChangeUserPasswordModel model)

@@ -15,11 +15,8 @@ namespace Bgs.Bll.Abstract
         public Task<string> GetAvailablePincode();
         public Task ReleasePincode(string pincode, DateTime releaseDate);
         public Task<User> GetByCredentials(string username, string password);
-        public Task<UserDto> GetUserDetails(int userId);
-        public Task<string> GetUserAddress(int userId);
-        public Task UpdateDetails(int userId, string phoneNumber);
-        public Task UpdateUserAddress(int userId, string address);
-        public Task AddUserAddress(int userId, string address);
+        public Task<UserDto> GetUserDetails(int userId);        
+        public Task UpdateDetails(int userId, string firstname, string lastname, DateTime birthDate, int genderId, string address, string phoneNumber);       
         public Task UpdateUserPassword(int userId, string password);
         public Task UpdateBalance(int userId, decimal? amount);
         public Task<decimal?> GetBalance(int userId);

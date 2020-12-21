@@ -46,6 +46,7 @@ namespace BgsLiveBackend.Web.Api.Controllers
                 Username = user.Username,
                 Firstname = user.Firstname,
                 Lastname = user.Lastname,
+                Pincode = user.Pincode,
                 Jwt = jwt
             });
         }

@@ -16,12 +16,20 @@ namespace Bgs.Live.Common.Dtos
 
         public string Username { get; set; }
 
-        public string Lastname { get; set; }
+        public string Lastname { get; set; }        
 
-        public decimal Balance { get; set; }
+        public int GenderId { get; set; }        
 
-        public string AvatarUrl { get; set; }
+        public string Address { get; set; }
 
-        public string UserAddress { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public DateTime RegistrationDate { get; set; }
+
+        public DateTime Birthdate { get; set; }
+
+        public int StatusId { get; set; }
+
+        
     }
 }
