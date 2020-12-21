@@ -14,7 +14,7 @@ namespace BgsLiveBackend.Web.Api.Models
 
         public string Lastname { get; set; }
 
-        public string Pincode { get; set; }
+        public string PinCode { get; set; }
 
         public JsonWebToken Jwt { get; set; }
     }

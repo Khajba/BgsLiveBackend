@@ -8,7 +8,7 @@ namespace Bgs.Live.Common.Entities
     {
         public int Id { get; set; }
         public string Email { get; set; }
-        public string Pincode { get; set; }
+        public string PinCode { get; set; }
         public string Firstname { get; set; }
         public string Username { get; set; }
         public string Lastname { get; set; }

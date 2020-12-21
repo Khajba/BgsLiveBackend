@@ -79,7 +79,7 @@ namespace Bgs.Live.Bll
                 throw new BgsException((int)WebApiErrorCodes.UsernameOrPasswordIncorrect);
             }
 
-            user = await _userRepository.GetByCredentials(username, password.ToSHA256(user.Pincode));
+            user = await _userRepository.GetByCredentials(username, password.ToSHA256(user.PinCode));
 
             return user;
 

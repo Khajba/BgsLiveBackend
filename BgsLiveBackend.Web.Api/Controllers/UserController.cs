@@ -24,8 +24,6 @@ namespace BgsLiveBackend.Web.Api.Controllers
             return Ok(userDetails);
         }
 
-
-
         [HttpPost("update")]
         public async Task<IActionResult> SaveDetails(UpdateUserDetailsModel model)
         {

@@ -26,7 +26,7 @@ namespace Bgs.Live.Common.Dtos
 
         public DateTime RegistrationDate { get; set; }
 
-        public DateTime Birthdate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public int StatusId { get; set; }
 
