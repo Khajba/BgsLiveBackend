@@ -13,6 +13,7 @@ namespace Bgs.Bll.Abstract
         public Task AddUser(string email, string firstname, string username, string lastname, string password, int statusId, string pincode, string personalId, int genderId, DateTime RegistrationDate, DateTime birthDate, string address);
         public Task<User> GetUserById(int Id);
         public Task<string> GetAvailablePincode();
+        public Task<User> GetUserByPersonalNumber(string personalNumber);
         public Task ReleasePincode(string pincode, DateTime releaseDate);
         public Task<User> GetByCredentials(string username, string password);
         public Task<UserDto> GetUserDetails(int userId);        

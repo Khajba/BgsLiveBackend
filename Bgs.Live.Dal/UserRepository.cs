@@ -219,5 +219,15 @@ namespace Bgs.Live.Dal
                 await cmd.ExecuteNonQueryAsync();
             }
         }
+
+        public async Task<User> GetUserByPersonalNumber(string personalNumber)
+        {
+            using (var cmd = GetSpCommand($"{_schemaUser}.GetUserByPersonalNumber"))
+            {
+                cmd.AddParameter("personalNumber", personalNumber);
+
+                return await cmd.ExecuteReaderSingleAsync<User>();
+            }
+        }
     }
 }

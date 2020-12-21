@@ -42,11 +42,11 @@ namespace Bgs.Live.Bll
         public async Task RegisterUser(string email, string firstname, string username, string lastname, string password, string personalId, int genderId, DateTime birthDate, string address)
         {
             var pincode =await  _userRepository.GetAvailablePincode();
-            var user = await _userRepository.GetUserByEmail(email);
+            var user = await _userRepository.GetUserByPersonalNumber(personalId);
 
             if (user != null)
             {
-                throw new BgsException((int)WebApiErrorCodes.EmailAlreadyExists);
+                throw new BgsException((int)WebApiErrorCodes.PersonalNumberIsAlreadyUsed);
             }
 
             var userbyUsername = _userRepository.GetUserByUsername(username);
