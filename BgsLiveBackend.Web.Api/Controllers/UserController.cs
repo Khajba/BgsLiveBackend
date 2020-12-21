@@ -31,7 +31,7 @@ namespace BgsLiveBackend.Web.Api.Controllers
             return Ok();
         }
 
-        [HttpPost("changeUserPassword")]
+        [HttpPost("changePassword")]
         public async Task<IActionResult> ChangeUserPassword(ChangeUserPasswordModel model)
         {
             await _userService.ChangeUserPassword(CurrentUserId, model.OldPassword, model.NewPassword);
