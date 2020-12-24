@@ -36,6 +36,7 @@ namespace BgsLiveBackend.Web.Api
 
             //Services
             services.AddSingleton<IUserService, UserService>();          
+            services.AddSingleton<ITransactionService, TransactionService>();          
 
 
             // repositories            
