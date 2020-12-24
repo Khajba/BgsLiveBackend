@@ -20,12 +20,13 @@ namespace Bgs.Live.Dal
         {
 
         }
-        public async Task AddTransaction(int typeId, int userId, DateTime createDate, decimal amount)
+        public async Task AddTransaction(int typeId, int userId, int? statusId, DateTime createDate, decimal amount)
         {
             using (var cmd = GetSpCommand($"{_schemaTransaction}.AddTransaction"))
             {
                 cmd.AddParameter("TypeId", typeId);
                 cmd.AddParameter("UserId", userId);
+                cmd.AddParameter("StatusId", statusId);
                 cmd.AddParameter("CreateDate", createDate);
                 cmd.AddParameter("Amount", amount);
 
@@ -33,13 +34,12 @@ namespace Bgs.Live.Dal
             };
         }
 
-        public async Task<IEnumerable<TransactionDto>> GetTransactions(int? userId, int? typeId, string pincode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize)
+        public async Task<IEnumerable<TransactionDto>> GetTransactions(int? userId, int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize)
         {
             using (var cmd = GetSpCommand($"{_schemaTransaction}.GetTransactions"))
             {
                 cmd.AddParameter("UserId", userId);
-                cmd.AddParameter("TypeId", typeId);
-                cmd.AddParameter("Pincode", pincode);
+                cmd.AddParameter("TypeId", typeId);                
                 cmd.AddParameter("StartDate", dateFrom);
                 cmd.AddParameter("EndDate", dateTo);
                 cmd.AddParameter("AmountFrom", amountFrom);
@@ -52,12 +52,11 @@ namespace Bgs.Live.Dal
             }
         }
 
-        public async Task<int> GetTransactionsCount(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo)
+        public async Task<int> GetTransactionsCount(int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo)
         {
             using (var cmd = GetSpCommand($"{_schemaTransaction}.GetTransactionsCount"))
             {
-                cmd.AddParameter("TypeId", typeId);
-                cmd.AddParameter("Pincode", pinCode);
+                cmd.AddParameter("TypeId", typeId);                
                 cmd.AddParameter("StartDate", dateFrom);
                 cmd.AddParameter("EndDate", dateTo);
                 cmd.AddParameter("AmountFrom", amountFrom);

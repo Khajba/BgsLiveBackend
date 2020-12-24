@@ -8,8 +8,8 @@ namespace Bgs.Live.Bll.Abstract
 {
     public interface ITransactionService
     {
-        Task<IEnumerable<TransactionDto>> GetTransactions(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize);
+        Task<IEnumerable<TransactionDto>> GetTransactions(int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize);
 
-        public Task<int> GetTransactionsCount(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo);
+        public Task<int> GetTransactionsCount(int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo);
     }
 }

@@ -8,11 +8,11 @@ namespace Bgs.Live.Dal.Abstract
 {
     public interface ITransactionRepository
     {
-        public Task AddTransaction(int typeId, int userId, DateTime createDate, decimal amount);
+        public Task AddTransaction(int typeId, int userId, int? statusId, DateTime createDate, decimal amount);
 
-        public Task<IEnumerable<TransactionDto>> GetTransactions(int? userId, int? typeId, string pincode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize);
+        public Task<IEnumerable<TransactionDto>> GetTransactions(int? userId, int? typeId,DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize);
 
-        public Task<int> GetTransactionsCount(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo);
+        public Task<int> GetTransactionsCount(int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo);
 
 
     }

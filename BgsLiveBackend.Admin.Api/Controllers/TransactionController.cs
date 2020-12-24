@@ -20,7 +20,7 @@ namespace BgsLiveBackend.Admin.Api.Controllers
         [HttpGet("getAll")]
         public IActionResult GetAll([FromQuery] TransactionFilterModel filter)
         {
-            var transactions = _transactionService.GetTransactions(filter.TypeId, filter.PinCode, filter.DateFrom, filter.DateTo, filter.AmountFrom, filter.AmountTo, filter.PageNumber, filter.PageSize);
+            var transactions = _transactionService.GetTransactions(filter.TypeId,filter.DateFrom, filter.DateTo, filter.AmountFrom, filter.AmountTo, filter.PageNumber, filter.PageSize);
 
             return Ok(transactions);
         }
@@ -28,7 +28,7 @@ namespace BgsLiveBackend.Admin.Api.Controllers
         [HttpGet("getTransactionsCount")]
         public IActionResult GetTransactionsCount([FromQuery] TransactionFilterModel filter)
         {
-            var count = _transactionService.GetTransactionsCount(filter.TypeId, filter.PinCode, filter.DateFrom, filter.DateTo, filter.AmountFrom, filter.AmountTo);
+            var count = _transactionService.GetTransactionsCount(filter.TypeId, filter.DateFrom, filter.DateTo, filter.AmountFrom, filter.AmountTo);
 
             return Ok(count);
         }

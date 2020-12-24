@@ -125,7 +125,7 @@ namespace Bgs.Live.Bll
             using (var transaction = new BgsTransactionScope())
             {
                 await _userRepository.UpdateBalance(userId, balance);
-                await _transactionRepository.AddTransaction((int)TransactionType.Deposit, userId, DateTime.Now, amount);
+                await _transactionRepository.AddTransaction((int)TransactionType.Deposit, userId,(int)TransactionStatus.Success, DateTime.Now, amount);
                 transaction.Complete();
 
 
@@ -139,6 +139,7 @@ namespace Bgs.Live.Bll
 
             if(balance < 0)
             {
+                await _transactionRepository.AddTransaction((int)TransactionType.Withdrow, userId, (int)TransactionStatus.Failed, DateTime.Now, amount);
                 throw new BgsException((int)WebApiErrorCodes.NotEnoughBalance);
             }
 
@@ -147,7 +148,7 @@ namespace Bgs.Live.Bll
                 using (var transaction = new BgsTransactionScope())
                 {
                     await _userRepository.UpdateBalance(userId, balance);
-                    await _transactionRepository.AddTransaction((int)TransactionType.Withdrow, userId, DateTime.Now, amount);
+                    await _transactionRepository.AddTransaction((int)TransactionType.Withdrow, userId, (int)TransactionStatus.Success, DateTime.Now, amount);
                 }
             }
         }
@@ -186,7 +187,7 @@ namespace Bgs.Live.Bll
         public async Task<AdminUserDetailsDto> GetDetails(int userId, int pageNumber, int pageSize)
         {
             var details = await _userRepository.GetUserDetails(userId);
-            var transactions =await _transactionRepository.GetTransactions(userId, null, null, null, null, null, null, pageNumber, pageSize);
+            var transactions =await _transactionRepository.GetTransactions(userId, null, null, null, null, null, pageNumber, pageSize);
 
             return new AdminUserDetailsDto
             {

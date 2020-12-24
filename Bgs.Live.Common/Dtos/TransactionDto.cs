@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bgs.Live.Common.Dtos
 {
@@ -8,14 +6,14 @@ namespace Bgs.Live.Common.Dtos
     {
         public int Id { get; set; }
 
-        public int TypeId { get; set; }
+        public int StatusId { get; set; }
 
-        public string Type { get; set; }
+        public int TypeId { get; set; }        
 
-        public DateTime CreateDate { get; set; }
-
-        public string PinCode { get; set; }
+        public DateTime CreateDate { get; set; }        
 
         public decimal Amount { get; set; }
+
+        public decimal Fee { get; set; }
     }
 }

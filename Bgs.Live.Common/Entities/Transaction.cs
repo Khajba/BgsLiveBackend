@@ -9,7 +9,9 @@ namespace Bgs.Live.Common.Entities
         public int Id { get; set; }
         public int UserId { get; set; }        
         public int TypeId { get; set; }
-        public decimal amount { get; set; }
+        public int StatusId { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime CreateDate { get; set; }
 
     }
 }

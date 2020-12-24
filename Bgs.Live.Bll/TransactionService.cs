@@ -16,14 +16,14 @@ namespace Bgs.Live.Bll
         {
             _transactionRepository = transactionRepository;
         }
-        public async Task<IEnumerable<TransactionDto>> GetTransactions(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize)
+        public async Task<IEnumerable<TransactionDto>> GetTransactions(int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo, int? pageNumber, int? pageSize)
         {
-            return await  _transactionRepository.GetTransactions(null, typeId, pinCode, dateFrom, dateTo, amountFrom, amountTo, pageNumber, pageSize);
+            return await  _transactionRepository.GetTransactions(null, typeId, dateFrom, dateTo, amountFrom, amountTo, pageNumber, pageSize);
         }
 
-        public async Task<int> GetTransactionsCount(int? typeId, string pinCode, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo)
+        public async Task<int> GetTransactionsCount(int? typeId, DateTime? dateFrom, DateTime? dateTo, decimal? amountFrom, decimal? amountTo)
         {
-            return await _transactionRepository.GetTransactionsCount(typeId, pinCode, dateFrom, dateTo, amountFrom, amountTo);
+            return await _transactionRepository.GetTransactionsCount(typeId,dateFrom, dateTo, amountFrom, amountTo);
         }
 
         
