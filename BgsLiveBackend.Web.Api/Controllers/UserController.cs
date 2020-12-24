@@ -45,6 +45,13 @@ namespace BgsLiveBackend.Web.Api.Controllers
             return Ok();
         }
 
+        [HttpPost("withdrow")]
+        public async Task<IActionResult> Withdrow([FromBody][Required] decimal amount)
+        {
+            await _userService.Withdrow(CurrentUserId, amount);
+            return Ok();
+        }
+
         [HttpGet("getBalance")]
         public async Task<IActionResult> GetBalance()
         {

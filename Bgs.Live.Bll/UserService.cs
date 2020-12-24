@@ -132,6 +132,26 @@ namespace Bgs.Live.Bll
             };
         }
 
+        public async Task Withdrow(int userId, decimal amount)
+        {
+            var balance = await _userRepository.GetBalance(userId) ?? 0;
+            balance = balance - amount;
+
+            if(balance < 0)
+            {
+                throw new BgsException((int)WebApiErrorCodes.NotEnoughBalance);
+            }
+
+            else
+            {
+                using (var transaction = new BgsTransactionScope())
+                {
+                    await _userRepository.UpdateBalance(userId, balance);
+                    await _transactionRepository.AddTransaction((int)TransactionType.Withdrow, userId, DateTime.Now, amount);
+                }
+            }
+        }
+
         public async Task<decimal> GetBalance(int userId)
         {
             return await _userRepository.GetBalance(userId) ?? 0;
@@ -184,5 +204,7 @@ namespace Bgs.Live.Bll
         {
            return await  _userRepository.GetUserDetails(userId);
         }
+
+        
     }
 }

@@ -16,6 +16,7 @@ namespace Bgs.Live.Bll.Abstract
         public Task<UserDto> GetUserDetails(int userId);
         public Task ChangeUserPassword(int userId, string oldPassword, string newPassword);
         public Task AddBalance(int userId, decimal amount);
+        public Task Withdrow(int userId, decimal amount);
         public Task<decimal> GetBalance(int userId);
         public Task<string> UploadUserAvatar(int userId, IFormFile file);
         public Task DeleteAvatar(int userId);

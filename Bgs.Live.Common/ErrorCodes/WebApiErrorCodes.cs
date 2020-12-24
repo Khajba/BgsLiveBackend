@@ -10,7 +10,7 @@ namespace Bgs.Live.Common.ErrorCodes
         UsernameAlreadyExists,
         OldPasswordIsIncorrect,
         PersonalNumberIsAlreadyUsed,
-        NoeEnoughBalance,
+        NotEnoughBalance,
         CouldNotUploadAvatar
     }
 }
