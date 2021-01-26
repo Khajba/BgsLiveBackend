@@ -2,6 +2,7 @@
 using BgsLiveBackend.Web.Api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
@@ -21,9 +22,10 @@ namespace BgsLiveBackend.Web.Api.Controllers
         [HttpGet("getDetails")]
         public async Task<IActionResult> GetDetails()
         {
-            var userDetails = await _UserService.GetUserDetails(CurrentUserId);
+            throw new Exception("sdd");
+            //var userDetails = await _UserService.GetUserDetails(CurrentUserId);
 
-            return Ok(userDetails);
+           // return Ok(userDetails);
         }
 
         [HttpPost("update")]

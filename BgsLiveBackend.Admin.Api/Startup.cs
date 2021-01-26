@@ -35,11 +35,12 @@ namespace BgsLiveBackend.Admin.Api
             // services
             
             services.AddSingleton<IInternalUserService, InternalUserService>();
-            
+            services.AddSingleton<ILogService, LogService>();
 
             // repositories
             services.AddSingleton<IInternalUserRepository, InternalUserRepository>();
-           
+            services.AddSingleton<ILogRepository, LogRepository>();
+
 
 
             services.AddHttpClient();

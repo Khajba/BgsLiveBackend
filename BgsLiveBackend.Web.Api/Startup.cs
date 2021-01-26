@@ -1,4 +1,5 @@
 using Bgs.Bll.Abstract;
+using Bgs.Dal.Abstract;
 using Bgs.Infrastructure.Api.Authorization;
 using Bgs.Infrastructure.Api.Exceptions;
 using Bgs.Live.Bll;
@@ -36,12 +37,13 @@ namespace BgsLiveBackend.Web.Api
 
             //Services
             services.AddSingleton<IUserService, UserService>();          
-            services.AddSingleton<ITransactionService, TransactionService>();          
-
+            services.AddSingleton<ITransactionService, TransactionService>();
+            services.AddSingleton<ILogService, LogService>();
 
             // repositories            
             services.AddSingleton<IUserRepository, UserRepository>();           
             services.AddSingleton<ITransactionRepository, TransactionRepository>();
+            services.AddSingleton<ILogRepository, LogRepository>();
             
 
             services.AddHttpClient();

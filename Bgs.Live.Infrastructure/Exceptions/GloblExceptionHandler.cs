@@ -1,4 +1,5 @@
 ﻿
+using Bgs.Live.Bll.Abstract;
 using Bgs.Live.Core.Exceptions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +15,14 @@ namespace Bgs.Infrastructure.Api.Exceptions
     {
         private readonly IWebHostEnvironment _environment;
         private readonly RequestDelegate _next;
+        private readonly ILogService _logService;
 
-        public GlobalExceptionHandler(RequestDelegate next, IWebHostEnvironment environment)
+
+        public GlobalExceptionHandler(RequestDelegate next, IWebHostEnvironment environment, ILogService logService)
         {
             _environment = environment;
             _next = next;
+            _logService = logService;
         }
 
         public async Task InvokeAsync(HttpContext httpContext)
@@ -33,12 +37,19 @@ namespace Bgs.Infrastructure.Api.Exceptions
             }
             catch (Exception ex)
             {
+                Task.Run(async () =>
+                {
+                    await _logService.AddLogError(DateTime.Now, ex.Message, ex.StackTrace);
+                });
+
                 if (_environment.IsDevelopment())
                 {
                     throw ex;
                 }
 
                 await HandleExceptionAsync(httpContext, (int)HttpStatusCode.InternalServerError);
+
+
             }
         }
 
