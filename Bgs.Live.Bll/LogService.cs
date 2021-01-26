@@ -21,5 +21,10 @@ namespace Bgs.Live.Bll
         {
             await _logRepository.AddLogError(logDate, message, stackTrace);
         }
+
+        public async Task AddLogRequest(string url, DateTime logDate, string ip, string browser, string query, string param)
+        {
+            await _logRepository.AddLogRequest(url, logDate, ip, browser, query, param);
+        }
     }
 }

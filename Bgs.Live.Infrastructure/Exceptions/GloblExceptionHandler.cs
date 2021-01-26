@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Bgs.Infrastructure.Api.Exceptions
 {
@@ -26,10 +27,15 @@ namespace Bgs.Infrastructure.Api.Exceptions
         }
 
         public async Task InvokeAsync(HttpContext httpContext)
-        {
+        {     
+
+
+
+
             try
             {
                 await _next(httpContext);
+                
             }
             catch (BgsException ex)
             {

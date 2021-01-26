@@ -29,5 +29,21 @@ namespace Bgs.Live.Dal
                 await cmd.ExecuteNonQueryAsync();
             };
         }
+
+        public async Task AddLogRequest(string url, DateTime logDate, string ip, string browser, string query, string param)
+        {
+            using (var cmd = GetSpCommand($"{_schemalog}.AddRequestLog"))
+            {
+                cmd.AddParameter("Url", url);
+                cmd.AddParameter("LogDate", logDate);
+                cmd.AddParameter("Ip", ip);
+                cmd.AddParameter("Browser", browser);
+                cmd.AddParameter("Query", query);
+                cmd.AddParameter("Params", param);
+
+
+                await cmd.ExecuteNonQueryAsync();
+            };
+        }
     }
 }

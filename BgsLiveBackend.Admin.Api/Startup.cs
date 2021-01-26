@@ -4,6 +4,7 @@ using Bgs.Infrastructure.Api.Exceptions;
 using Bgs.Live.Bll;
 using Bgs.Live.Bll.Abstract;
 using Bgs.Live.Dal;
+using Bgs.Live.Infrastructure.Requests;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -57,7 +58,7 @@ namespace BgsLiveBackend.Admin.Api
                 app.UseDeveloperExceptionPage();
             }
 
-
+            app.UseMiddleware<RequestHandler>();
             app.UseMiddleware<GlobalExceptionHandler>();
 
             app.UseCors(options =>
