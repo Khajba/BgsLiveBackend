@@ -206,6 +206,9 @@ namespace Bgs.Live.Bll
            return await  _userRepository.GetUserDetails(userId);
         }
 
-        
+        public Task GetReferrer(string refer, string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

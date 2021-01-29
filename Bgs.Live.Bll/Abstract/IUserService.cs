@@ -23,6 +23,7 @@ namespace Bgs.Live.Bll.Abstract
         public Task<int> GetUsersCount(string pinCode, string email, string username, string firstname, string lastname, string personalId);
         public Task<AdminUserDetailsDto> GetDetails(int userId, int pageNumber, int pageSize);
         public Task<IEnumerable<UserListItemDto>> GetUsers(string pinCode, string email, string firstname, string username, string lastname, int? pageNumber, int? PageSize, string personalId);
+        public Task GetReferrer(string refer, string id);
 
     }
 }

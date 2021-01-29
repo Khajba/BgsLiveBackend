@@ -30,7 +30,8 @@ namespace BgsLiveBackend.Web.Api.Controllers
 
         [HttpPost("update")]
         public async Task<IActionResult> SaveDetails(UpdateUserDetailsModel model)
-        {
+        {            
+
             await _UserService.SaveDetails(CurrentUserId, model.Firstname, model.Lastname, model.BirthDate, model.GenderId, model.Address, model.PhoneNumber);
             return Ok();
         }

@@ -6,19 +6,12 @@ using Bgs.Live.Bll;
 using Bgs.Live.Bll.Abstract;
 using Bgs.Live.Dal;
 using Bgs.Live.Dal.Abstract;
-using Bgs.Live.Infrastructure.Requests;
+using Bgs.Live.Infrastructure.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BgsLiveBackend.Web.Api
 {
@@ -37,19 +30,23 @@ namespace BgsLiveBackend.Web.Api
             services.AddCors();
 
             //Services
-            services.AddSingleton<IUserService, UserService>();          
+            services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<ITransactionService, TransactionService>();
             services.AddSingleton<ILogService, LogService>();
 
             // repositories            
-            services.AddSingleton<IUserRepository, UserRepository>();           
+            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ITransactionRepository, TransactionRepository>();
             services.AddSingleton<ILogRepository, LogRepository>();
-            
+
 
             services.AddHttpClient();
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<CommandActionFIlter>();
+                options.Filters.Add<LogFilter>();
+            });
 
             services.AddBgsAuthorization();
         }
@@ -62,7 +59,7 @@ namespace BgsLiveBackend.Web.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<RequestHandler>();
+            //app.UseMiddleware<RequestHandler>();
             app.UseMiddleware<GlobalExceptionHandler>();
 
             app.UseCors(options =>
@@ -71,8 +68,6 @@ namespace BgsLiveBackend.Web.Api
                 options.AllowAnyMethod();
                 options.AllowAnyHeader();
             });
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
