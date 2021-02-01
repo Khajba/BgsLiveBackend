@@ -33,11 +33,13 @@ namespace BgsLiveBackend.Web.Api
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<ITransactionService, TransactionService>();
             services.AddSingleton<ILogService, LogService>();
+            services.AddSingleton<IImageService, ImageService>();
 
             // repositories            
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ITransactionRepository, TransactionRepository>();
             services.AddSingleton<ILogRepository, LogRepository>();
+            services.AddSingleton<IImageRepository, ImageRepository>();
 
 
             services.AddHttpClient();
